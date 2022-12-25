@@ -20,7 +20,7 @@ jobs:
         image: postgres:14
         env:
           POSTGRES_DB: simple_bank        
-          POSTGRES_PASSWORD: p@ssw0rd
+          POSTGRES_PASSWORD: secret
           POSTGRES_USER: root
         ports:
           - 6543:5432
