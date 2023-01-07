@@ -2,6 +2,7 @@ package db
 
 import (
 	"database/sql"
+	"jnwanya/simplebank/db/util"
 	"log"
 	"os"
 	"testing"
@@ -19,7 +20,14 @@ const (
 
 func TestMain(m *testing.M) {
 	var err error
-	testDB, err = sql.Open(dbDriver, dbSource)
+
+	config, err := util.LoadConfig("../..")
+
+	if err != nil {
+		log.Fatalln("Cannot load app configs.", err)
+	}
+
+	testDB, err = sql.Open(config.DBDriver, config.DBSource)
 
 	if err != nil {
 		log.Fatalln("Cannot connect to the DB.", err)
